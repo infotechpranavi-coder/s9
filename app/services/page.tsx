@@ -184,35 +184,35 @@ export default function ServicesPage() {
         </div>
         <div className="relative z-10 max-w-6xl mx-auto text-center">
           <motion.span
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
+            transition={{ delay: 0.2, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
             className="inline-flex items-center gap-2 rounded-full bg-white/20 border border-white/30 px-4 py-1.5 text-sm font-medium text-white mb-6"
           >
             <Sparkles className="h-4 w-4" /> Design to execution, under one roof
           </motion.span>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            transition={{ delay: 0.28, duration: 0.6, ease: [0.32, 0.72, 0, 1] }}
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 leading-tight text-white drop-shadow-md"
           >
             Services that
             <span className="block text-[#7dd3d3]">transform spaces</span>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.45, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
             className="text-lg md:text-xl text-white/95 max-w-2xl mx-auto mb-12 drop-shadow-sm"
           >
             From concept to handover—interior design, turnkey execution, and premium finishes for corporate, commercial, and residential projects.
           </motion.p>
           {/* Stats strip */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.55, duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
             className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
           >
             {STATS.map((stat, i) => (
@@ -301,9 +301,9 @@ export default function ServicesPage() {
                   const zIndex = offset === 0 ? 10 : Math.abs(offset) === 1 ? 5 : 0;
                   const opacity = Math.abs(offset) > 2 ? 0.4 : 1;
                   const translateX = offset * cardSpacing;
-                  return (
-                    <div
-                      key={service.id}
+              return (
+                <div
+                  key={service.id}
                       className="absolute flex justify-center items-center"
                       style={{
                         width: cardWidth,
@@ -343,8 +343,8 @@ export default function ServicesPage() {
                     </div>
                   );
                 })}
-              </div>
-            </div>
+                  </div>
+                </div>
 
             {/* Dots */}
             <div className="flex justify-center gap-2 mt-8">
@@ -474,17 +474,15 @@ export default function ServicesPage() {
       </motion.section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-[#0E2C40]/10 text-[#0E2C40] py-16 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-12 mb-8">
+      <footer className="bg-white border-t border-[#0E2C40]/10 text-[#0E2C40] py-16">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-8">
           <div>
-            <img src="/S9%20LOGO%20NEW.jpg%20(1).jpeg" alt="S9 Enterprises" className="h-10 w-auto object-contain mb-2" />
-            <h3 className="font-bold text-lg mb-4">S9 Enterprises</h3>
-            <p className="text-[#1A4A5A] text-sm">
-              Interior design and turnkey contractors delivering exceptional quality.
-            </p>
+            <img src="/S9%20LOGO%20NEW.jpg%20(1).jpeg" alt="S9 Enterprises" className="h-24 w-auto object-contain mb-3" />
+            <h3 className="font-bold text-lg mb-2">S9 Enterprises</h3>
+            <p className="text-[#1A4A5A] text-sm">Interior Designers & Turnkey Contractors</p>
           </div>
           <div>
-            <h4 className="font-semibold mb-4 text-sm uppercase">Quick Links</h4>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Useful Links</h4>
             <ul className="space-y-2 text-sm text-[#1A4A5A]">
               <li><Link href="/" className="hover:text-[#148D8D] transition">Home</Link></li>
               <li><Link href="/about" className="hover:text-[#148D8D] transition">About</Link></li>
@@ -494,25 +492,24 @@ export default function ServicesPage() {
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4 text-sm uppercase">Services</h4>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Services</h4>
             <ul className="space-y-2 text-sm text-[#1A4A5A]">
-              <li>Interior Design</li>
-              <li>Turnkey Execution</li>
-              <li>Office Design</li>
-              <li>Commercial Projects</li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Interior Design</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Space Planning</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Turnkey Execution</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4 text-sm uppercase">Contact</h4>
-            <p className="text-sm text-[#1A4A5A]">
-              <strong>Email:</strong> s9enterprises18@gmail.com<br />
-              <strong>Phone:</strong> 9930111780 / 8369463701<br />
-              <strong>Location:</strong> Thane (West), Mumbai
-            </p>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Contact</h4>
+            <div className="space-y-2 text-sm text-[#1A4A5A]">
+              <p>+91 99301 11780</p>
+              <p>s9enterprises18@gmail.com</p>
+              <p>Thane (West), Mumbai</p>
+            </div>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto pt-8 border-t border-[#0E2C40]/10 text-center text-sm text-[#1A4A5A]">
-          <p>&copy; 2026 S9 Enterprises. All rights reserved.</p>
+        <div className="border-t border-[#0E2C40]/10 pt-8 text-center text-[#1A4A5A] text-sm">
+          <p>&copy; 2026 S9 Enterprises. All rights reserved. Interior Designers & Turnkey Contractors</p>
         </div>
       </footer>
     </div>

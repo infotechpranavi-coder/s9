@@ -28,11 +28,11 @@ export default function Navbar() {
               href="/"
               className="flex items-center gap-3 shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#148D8D] focus-visible:ring-offset-2 rounded-xl"
             >
-              <div className="relative flex items-center justify-center h-11 w-11 rounded-2xl bg-white/70 shadow-[0_0_0_1px_rgba(20,141,141,0.12),0_8px_20px_rgba(14,44,64,0.18)] overflow-hidden">
+              <div className="relative flex items-center justify-center h-14 w-14 sm:h-16 sm:w-16 rounded-3xl bg-white/70 shadow-[0_0_0_1px_rgba(20,141,141,0.12),0_12px_28px_rgba(14,44,64,0.24)] overflow-hidden">
                 <img
                   src="/S9%20LOGO%20NEW.jpg%20(1).jpeg"
                   alt="S9 Enterprises"
-                  className="h-9 w-auto object-contain"
+                  className="h-full w-auto object-contain"
                 />
               </div>
               <div className="hidden sm:flex flex-col leading-tight">
@@ -54,8 +54,8 @@ export default function Navbar() {
                   <Link
                     key={href}
                     href={href}
-                    className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-300 ${
-                      isActive
+                    className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-all duration-[350ms] ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                        isActive
                         ? 'text-white bg-[#148D8D] shadow-sm shadow-[#148D8D]/50'
                         : 'text-[#1A4A5A] hover:text-[#148D8D] hover:bg-[#148D8D]/8'
                     }`}
@@ -70,14 +70,14 @@ export default function Navbar() {
             <div className="flex items-center gap-3">
               <Link
                 href="/contact"
-                className="hidden sm:inline-flex items-center justify-center rounded-full bg-[#148D8D] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-md shadow-[#148D8D]/25 hover:bg-[#117a7a] hover:shadow-lg hover:shadow-[#148D8D]/30 active:scale-[0.97] transition-all"
+                className="hidden sm:inline-flex items-center justify-center rounded-full bg-[#148D8D] px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-white shadow-md shadow-[#148D8D]/25 hover:bg-[#117a7a] hover:shadow-lg hover:shadow-[#148D8D]/30 active:scale-[0.98] transition-all duration-[350ms] ease-[cubic-bezier(0.32,0.72,0,1)]"
               >
                 Start a Project
               </Link>
               <button
                 type="button"
                 onClick={() => setMobileOpen((o) => !o)}
-                className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/60 bg-white/70 text-[#0E2C40] shadow-sm hover:bg-white hover:border-[#148D8D]/40 transition-colors"
+                className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/60 bg-white/70 text-[#0E2C40] shadow-sm hover:bg-white hover:border-[#148D8D]/40 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
                 aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
                 aria-expanded={mobileOpen}
               >
@@ -89,7 +89,7 @@ export default function Navbar() {
 
         {/* Mobile menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ease-out ${
+          className={`md:hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
             mobileOpen ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0'
           }`}
           aria-hidden={!mobileOpen}
@@ -103,8 +103,8 @@ export default function Navbar() {
                   key={href}
                   href={href}
                   onClick={() => setMobileOpen(false)}
-                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition-colors ${
-                    isActive
+                  className={`flex items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] ${
+                      isActive
                       ? 'bg-[#148D8D] text-white'
                       : 'text-[#1A4A5A] hover:bg-[#148D8D]/10 hover:text-[#148D8D]'
                   }`}

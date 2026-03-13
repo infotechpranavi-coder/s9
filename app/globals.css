@@ -4,6 +4,11 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-out-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-fast: 200ms;
+  --duration-normal: 350ms;
+  --duration-slow: 500ms;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -119,8 +124,21 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  a,
+  button {
+    transition-timing-function: var(--ease-smooth);
+  }
+  a {
+    transition-duration: var(--duration-normal);
+  }
+  button {
+    transition-duration: var(--duration-normal);
   }
 }
 
@@ -154,8 +172,8 @@
     transform: scale(1);
   }
   50% {
-    opacity: 0.25;
-    transform: scale(1.05);
+    opacity: 0.22;
+    transform: scale(1.03);
   }
 }
 
@@ -169,7 +187,7 @@
     #e8f0ef 100%
   );
   background-size: 400% 400%;
-  animation: cta-gradient-shift 12s ease-in-out infinite;
+  animation: cta-gradient-shift 14s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 
 .glass-shimmer {
@@ -195,18 +213,85 @@
     rgba(255, 255, 255, 0.03) 75%,
     transparent 100%
   );
-  animation: glass-shimmer 4s ease-in-out infinite;
+  animation: glass-shimmer 5s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+/* S9 custom color palette overrides */
+@layer base {
+  /* Deep blue headings and primary text */
+  .text-\[\#0E2C40\],
+  .hover\:text-\[\#0E2C40\]:hover {
+    color: #114572 !important;
+  }
+
+  /* Steel blue body / secondary text */
+  .text-\[\#1A4A5A\],
+  .text-\[\#1A4A5A\]\/80,
+  .hover\:text-\[\#1A4A5A\]:hover {
+    color: #316C94 !important;
+  }
+
+  /* Primary logo blue accents */
+  .bg-\[\#148D8D\],
+  .from-\[\#148D8D\],
+  .via-\[\#148D8D\],
+  .to-\[\#148D8D\],
+  .hover\:bg-\[\#148D8D\]:hover {
+    background-color: #5A8FB1 !important;
+  }
+
+  .text-\[\#148D8D\],
+  .hover\:text-\[\#148D8D\]:hover {
+    color: #5A8FB1 !important;
+  }
+
+  .border-\[\#148D8D\],
+  .border-\[\#148D8D\]\/10,
+  .border-\[\#148D8D\]\/20,
+  .border-\[\#148D8D\]\/25,
+  .border-\[\#148D8D\]\/30,
+  .border-\[\#148D8D\]\/40,
+  .border-\[\#148D8D\]\/50 {
+    border-color: rgba(90, 143, 177, 0.4) !important;
+  }
+
+  /* Hover states using slightly deeper blue */
+  .hover\:bg-\[\#1ba3a3\]:hover,
+  .bg-\[\#1ba3a3\] {
+    background-color: #316C94 !important;
+  }
+
+  /* Background bands mapped to soft blues / white */
+  .bg-\[\#f8faf9\] {
+    background-color: #FEFEFE !important;
+  }
+
+  .bg-\[\#f0f5f4\] {
+    background-color: #BED9E4 !important;
+  }
+
+  .bg-\[\#e8f0ef\] {
+    background-color: #8CB6CD !important;
+  }
+
+  /* Previous light green accent remapped into palette */
+  .bg-\[\#C1E1A7\],
+  .bg-\[\#C1E1A7\]\/40,
+  .bg-\[\#C1E1A7\]\/50,
+  .bg-\[\#C1E1A7\]\/70 {
+    background-color: #BED9E4 !important;
+  }
 }
 
 /* Testimonials section – continuous motion */
 @keyframes testimonial-float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  50% { transform: translateY(-6px); }
 }
 
 @keyframes testimonial-float-alt {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(6px); }
+  50% { transform: translateY(5px); }
 }
 
 @keyframes testimonial-bg-shift {
@@ -224,5 +309,5 @@
     #e8f0ef 100%
   );
   background-size: 200% 200%;
-  animation: testimonial-bg-shift 15s ease-in-out infinite;
+  animation: testimonial-bg-shift 18s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }

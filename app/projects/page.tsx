@@ -77,12 +77,13 @@ export default function ProjectsPage() {
         </video>
         <div className="absolute inset-0 bg-[#0E2C40]/60" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
-          <Link href="/" className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white mb-8 transition">
+          <Link href="/" className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white mb-8 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
             <ArrowLeft className="h-4 w-4" /> Back to Home
           </Link>
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.55, ease: [0.32, 0.72, 0, 1] }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-md"
           >
             Our <span className="text-[#7dd3d3]">Project Portfolio</span>
@@ -113,7 +114,7 @@ export default function ProjectsPage() {
                   onClick={() => setFlippedIndex(isFlipped ? null : i)}
                 >
                   <div
-                    className="relative w-full h-full transition-transform duration-500 ease-out"
+                    className="relative w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
                     style={{
                       transformStyle: 'preserve-3d',
                       transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
@@ -188,7 +189,7 @@ export default function ProjectsPage() {
                       return (
                         <div
                           key={`${copy}-${i}`}
-                          className="group flex-shrink-0 w-[280px] md:w-[300px] rounded-2xl overflow-hidden border border-[#0E2C40]/10 transition-all duration-300 hover:border-[#148D8D]/40 hover:shadow-xl hover:shadow-[#148D8D]/10"
+                          className="group flex-shrink-0 w-[280px] md:w-[300px] rounded-2xl overflow-hidden border border-[#0E2C40]/10 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#148D8D]/40 hover:shadow-xl hover:shadow-[#148D8D]/10"
                           style={{
                             background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(232,240,239,0.6) 100%)',
                             boxShadow: '0 4px 24px rgba(14,44,64,0.08), inset 0 1px 0 rgba(255,255,255,0.8)',
@@ -198,7 +199,7 @@ export default function ProjectsPage() {
                             <img
                               src={img}
                               alt=""
-                              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                              className="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
                               aria-hidden
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-[#0E2C40]/60 via-transparent to-transparent" />
@@ -234,10 +235,10 @@ export default function ProjectsPage() {
             {ONGOING_PROJECTS.map((project, i) => (
               <div
                 key={i}
-                className="group relative flex items-start gap-4 py-6 border-b border-[#0E2C40]/10 last:border-b-0 hover:border-[#148D8D]/30 transition-colors"
+                className="group relative flex items-start gap-4 py-6 border-b border-[#0E2C40]/10 last:border-b-0 hover:border-[#148D8D]/30 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
               >
-                <span className="absolute -left-5 md:-left-6 top-7 h-2 w-2 rounded-full bg-[#148D8D] shrink-0 group-hover:bg-[#1ba3a3] transition-colors" aria-hidden />
-                <p className="text-[#1A4A5A] text-sm md:text-base leading-relaxed pt-0.5 group-hover:text-[#0E2C40] transition-colors">
+                <span className="absolute -left-5 md:-left-6 top-7 h-2 w-2 rounded-full bg-[#148D8D] shrink-0 group-hover:bg-[#1ba3a3] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]" aria-hidden />
+                <p className="text-[#1A4A5A] text-sm md:text-base leading-relaxed pt-0.5 group-hover:text-[#0E2C40] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
                   {project}
                 </p>
               </div>
@@ -264,7 +265,7 @@ export default function ProjectsPage() {
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 rounded-full bg-[#148D8D] px-8 py-3 text-sm font-semibold text-white hover:bg-[#1ba3a3] transition"
+            className="inline-flex items-center gap-2 rounded-full bg-[#148D8D] px-8 py-3 text-sm font-semibold text-white hover:bg-[#1ba3a3] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
           >
             Start a Project <ChevronRight className="h-4 w-4" />
           </Link>
@@ -272,19 +273,42 @@ export default function ProjectsPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-[#0E2C40]/10 text-[#1A4A5A] py-12">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
-            <img src="/S9%20LOGO%20NEW.jpg%20(1).jpeg" alt="S9 Enterprises" className="h-8 w-auto object-contain" />
-            <p className="text-sm">© 2026 S9 Enterprises. All rights reserved.</p>
+      <footer className="bg-white border-t border-[#0E2C40]/10 text-[#0E2C40] py-16">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-8">
+          <div>
+            <img src="/S9%20LOGO%20NEW.jpg%20(1).jpeg" alt="S9 Enterprises" className="h-24 w-auto object-contain mb-3" />
+            <h3 className="font-bold text-lg mb-2">S9 Enterprises</h3>
+            <p className="text-[#1A4A5A] text-sm">Interior Designers & Turnkey Contractors</p>
           </div>
-          <div className="flex gap-8 text-sm">
-            <Link href="/" className="hover:text-[#148D8D] transition">Home</Link>
-            <Link href="/about" className="hover:text-[#148D8D] transition">About</Link>
-            <Link href="/services" className="hover:text-[#148D8D] transition">Services</Link>
-            <Link href="/projects" className="hover:text-[#148D8D] transition">Projects</Link>
-            <Link href="/contact" className="hover:text-[#148D8D] transition">Contact</Link>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Useful Links</h4>
+            <ul className="space-y-2 text-sm text-[#1A4A5A]">
+              <li><Link href="/" className="hover:text-[#148D8D] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">Home</Link></li>
+              <li><Link href="/about" className="hover:text-[#148D8D] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">About</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">Services</Link></li>
+              <li><Link href="/projects" className="hover:text-[#148D8D] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">Projects</Link></li>
+              <li><Link href="/contact" className="hover:text-[#148D8D] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">Contact</Link></li>
+            </ul>
           </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Services</h4>
+            <ul className="space-y-2 text-sm text-[#1A4A5A]">
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Interior Design</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Space Planning</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Turnkey Execution</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Contact</h4>
+            <div className="space-y-2 text-sm text-[#1A4A5A]">
+              <p>+91 99301 11780</p>
+              <p>s9enterprises18@gmail.com</p>
+              <p>Thane (West), Mumbai</p>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-[#0E2C40]/10 pt-8 text-center text-[#1A4A5A] text-sm">
+          <p>&copy; 2026 S9 Enterprises. All rights reserved. Interior Designers & Turnkey Contractors</p>
         </div>
       </footer>
     </div>

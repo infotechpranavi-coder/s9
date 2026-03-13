@@ -20,8 +20,24 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    alert('Thank you for your message! We will get back to you within 24 hours.');
+
+    const to = 's9enterprises18@gmail.com';
+    const subject = encodeURIComponent(
+      formData.subject || 'New enquiry from S9 website'
+    );
+    const bodyLines = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      formData.phone ? `Phone: ${formData.phone}` : '',
+      '',
+      'Message:',
+      formData.message,
+    ].filter(Boolean);
+
+    const body = encodeURIComponent(bodyLines.join('\n'));
+    const mailtoHref = `mailto:${to}?subject=${subject}&body=${body}`;
+
+    window.location.href = mailtoHref;
   };
 
   return (
@@ -40,7 +56,7 @@ export default function ContactPage() {
               <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/30 px-4 py-1.5 text-[11px] font-medium tracking-[0.18em] uppercase text-white mb-5">
                 <span className="h-2 w-2 rounded-full bg-[#C1E1A7]" />
                 Contact S9 Studio
-              </div>
+        </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-4 leading-tight drop-shadow-md">
                 Let&apos;s design the
                 <span className="block text-[#C1E1A7]">workspace you imagined.</span>
@@ -67,31 +83,15 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <div className="rounded-3xl bg-white/10 border border-white/25 backdrop-blur-xl p-5 shadow-[0_18px_45px_rgba(0,0,0,0.35)]">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-[#C1E1A7] mb-3">
-                  Quick contact
-                </p>
-                <div className="space-y-3 text-sm text-white/95">
-                  <p className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-[#C1E1A7]" />
-                    s9enterprises18@gmail.com
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-[#C1E1A7]" />
-                    +91 99301 11780
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <MapPin className="h-4 w-4 text-[#C1E1A7]" />
-                    Thane (West), Mumbai
-                  </p>
-                  <p className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-[#C1E1A7]" />
-                    Mon – Sat • 10 AM – 6 PM
-                  </p>
+              <div className="rounded-3xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.45)] border border-white/40">
+                <div className="relative h-64 md:h-72 lg:h-80">
+                  <img
+                    src="/WhatsApp%20Image%202026-03-10%20at%205.52.20%20PM%20(1).jpeg"
+                    alt="S9 Enterprises office interior"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
                 </div>
-                <p className="mt-4 text-[11px] text-white/80">
-                  Prefer WhatsApp? Mention it in your message and we&apos;ll respond there.
-                </p>
               </div>
             </div>
           </div>
@@ -133,106 +133,134 @@ export default function ContactPage() {
               <p className="text-[#1A4A5A] text-sm mb-8">We reply within 24 hours.</p>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
+          <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                       placeholder="Your name"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                    />
-                  </div>
-                  <div>
+                />
+              </div>
+              <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Email</label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                       placeholder="you@example.com"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                    />
-                  </div>
+                />
+              </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <div>
+              <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Phone</label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="+91 XXXXX XXXXX"
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="+91 XXXXX XXXXX"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                    />
-                  </div>
-                  <div>
+                />
+              </div>
+              <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Subject</label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      required
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
                       placeholder="Project type or topic"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                    />
+                />
                   </div>
-                </div>
-                <div>
+              </div>
+              <div>
                   <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Message</label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                     rows={5}
                     placeholder="Tell us about your space, budget, and timeline..."
                     className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
+                />
+              </div>
+              <button
+                type="submit"
                   className="w-full rounded-xl bg-[#148D8D] py-3.5 text-white font-semibold hover:bg-[#1ba3a3] transition flex items-center justify-center gap-2"
-                >
-                  <Send className="w-5 h-5" />
+              >
+                <Send className="w-5 h-5" />
                   Send message
-                </button>
-              </form>
-            </div>
+              </button>
+            </form>
+          </div>
 
             {/* Side panel: studio map + reasons */}
             <div className="space-y-8">
-              <div className="rounded-3xl overflow-hidden border border-[#0E2C40]/12 shadow-xl shadow-[#0E2C40]/12 bg-[#0E2C40]">
-                <div className="relative aspect-[4/3] max-h-[400px]">
-                  <iframe
-                    title="S9 Enterprises Studio Location"
-                    src="https://www.google.com/maps?q=Thane%20West%20Mumbai&output=embed"
-                    className="w-full h-full border-0"
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  />
-                  <div className="absolute inset-x-4 bottom-4 rounded-2xl bg-white/95 backdrop-blur px-4 py-3 shadow-md shadow-[#0E2C40]/30 flex items-start gap-3">
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#148D8D]/10 text-[#148D8D]">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#148D8D] mb-1">
-                        Studio address
+              {/* Map + info split card */}
+              <div className="rounded-3xl border border-[#0E2C40]/12 shadow-xl shadow-[#0E2C40]/12 bg-gradient-to-br from-[#0E2C40] via-[#148D8D] to-[#EFBC75] p-[1px]">
+                <div className="grid md:grid-cols-[1.1fr,1.2fr] gap-0 rounded-[1.4rem] overflow-hidden bg-white/96">
+                  {/* Info side */}
+                  <div className="p-5 md:p-6 flex flex-col justify-between bg-white/80">
+              <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#148D8D] mb-2">
+                        Visit our studio
                       </p>
-                      <p className="text-sm font-semibold text-[#0E2C40]">
+                      <h3 className="text-sm md:text-base font-semibold text-[#0E2C40] mb-3">
                         S9 Enterprises, Thane (West), Mumbai
-                      </p>
-                      <p className="text-xs text-[#1A4A5A]">
-                        Detailed directions shared once your consultation is booked.
-                      </p>
+                      </h3>
+                      <ul className="space-y-2 text-xs md:text-[13px] text-[#1A4A5A]">
+                        <li className="flex items-start gap-2">
+                          <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-[#148D8D]" />
+                          Easy access from corporate business district and Eastern Express Highway.
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-[#148D8D]" />
+                          Visitor parking available nearby; details shared with your appointment confirmation.
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <span className="mt-[3px] h-1.5 w-1.5 rounded-full bg-[#148D8D]" />
+                          Ideal for design discussions, material selection and project reviews.
+                        </li>
+                      </ul>
                     </div>
+                    <a
+                      href="https://www.google.com/maps/search/?api=1&query=Thane+West+Mumbai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex items-center gap-2 text-xs md:text-sm font-semibold text-[#148D8D] hover:text-[#1ba3a3] transition"
+                    >
+                      Open in Google Maps
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
                   </div>
-                </div>
+
+                  {/* Map side */}
+                  <div className="relative">
+                    <iframe
+                      title="S9 Enterprises Studio Location"
+                      src="https://www.google.com/maps?q=Thane%20West%20Mumbai&output=embed"
+                      className="w-full h-full border-0"
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                    <div className="pointer-events-none absolute left-3 top-3 rounded-full bg-white/90 backdrop-blur px-3 py-1 text-[11px] font-medium text-[#0E2C40] flex items-center gap-2 shadow-sm">
+                      <MapPin className="w-3.5 h-3.5 text-[#148D8D]" />
+                      Studio location
+                    </div>
+              </div>
+              </div>
               </div>
               <div className="rounded-2xl bg-white border border-[#0E2C40]/10 p-6 shadow-sm shadow-[#0E2C40]/5">
                 <h3 className="text-lg font-semibold text-[#0E2C40] mb-1">Why clients choose S9</h3>
@@ -292,19 +320,42 @@ export default function ContactPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-[#0E2C40]/10 py-12">
-        <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-3">
-            <img src="/S9%20LOGO%20NEW.jpg%20(1).jpeg" alt="S9 Enterprises" className="h-8 w-auto object-contain" />
-            <p className="text-[#1A4A5A] text-sm">© 2026 S9 Enterprises. All rights reserved.</p>
+      <footer className="bg-white border-t border-[#0E2C40]/10 text-[#0E2C40] py-16">
+        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-8">
+          <div>
+            <img src="/S9%20LOGO%20NEW.jpg%20(1).jpeg" alt="S9 Enterprises" className="h-24 w-auto object-contain mb-3" />
+            <h3 className="font-bold text-lg mb-2">S9 Enterprises</h3>
+            <p className="text-[#1A4A5A] text-sm">Interior Designers & Turnkey Contractors</p>
           </div>
-          <div className="flex gap-8 text-sm text-[#1A4A5A]">
-            <Link href="/" className="hover:text-[#148D8D] transition">Home</Link>
-            <Link href="/about" className="hover:text-[#148D8D] transition">About</Link>
-            <Link href="/services" className="hover:text-[#148D8D] transition">Services</Link>
-            <Link href="/projects" className="hover:text-[#148D8D] transition">Projects</Link>
-            <Link href="/contact" className="hover:text-[#148D8D] transition">Contact</Link>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Useful Links</h4>
+            <ul className="space-y-2 text-sm text-[#1A4A5A]">
+              <li><Link href="/" className="hover:text-[#148D8D] transition">Home</Link></li>
+              <li><Link href="/about" className="hover:text-[#148D8D] transition">About</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Services</Link></li>
+              <li><Link href="/projects" className="hover:text-[#148D8D] transition">Projects</Link></li>
+              <li><Link href="/contact" className="hover:text-[#148D8D] transition">Contact</Link></li>
+            </ul>
           </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Services</h4>
+            <ul className="space-y-2 text-sm text-[#1A4A5A]">
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Interior Design</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Space Planning</Link></li>
+              <li><Link href="/services" className="hover:text-[#148D8D] transition">Turnkey Execution</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm uppercase text-[#0E2C40]">Contact</h4>
+            <div className="space-y-2 text-sm text-[#1A4A5A]">
+              <p>+91 99301 11780</p>
+              <p>s9enterprises18@gmail.com</p>
+              <p>Thane (West), Mumbai</p>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-[#0E2C40]/10 pt-8 text-center text-[#1A4A5A] text-sm">
+          <p>&copy; 2026 S9 Enterprises. All rights reserved. Interior Designers & Turnkey Contractors</p>
         </div>
       </footer>
     </div>
