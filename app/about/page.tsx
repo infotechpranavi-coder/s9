@@ -40,7 +40,7 @@ export default function AboutPage() {
         >
           <source src="/7578542-uhd_3840_2160_30fps.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#0E2C40]/60" aria-hidden />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white mb-8 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
             <ArrowLeft className="h-4 w-4" /> Back to Home
@@ -137,9 +137,11 @@ export default function AboutPage() {
             {WHY_CHOOSE.map((item, i) => (
               <div
                 key={i}
-                className="rounded-xl bg-[#f8faf9] border border-[#0E2C40]/10 p-6 hover:border-[#148D8D]/30 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
+                className="group rounded-xl border border-[#0E2C40]/10 bg-white p-6 shadow-[0_10px_30px_rgba(14,44,64,0.04)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:border-[#148D8D]/20 hover:shadow-[0_16px_40px_rgba(20,141,141,0.10)]"
               >
-                <CheckCircle2 className="h-8 w-8 text-[#148D8D] mb-4" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full border border-[#148D8D]/20 bg-[#148D8D]/[0.05] shadow-[0_0_0_6px_rgba(20,141,141,0.03)] transition-all duration-300 group-hover:border-[#148D8D]/30 group-hover:bg-[#148D8D]/[0.08] group-hover:shadow-[0_0_0_10px_rgba(20,141,141,0.06)]">
+                  <CheckCircle2 className="h-7 w-7 text-[#148D8D]" />
+                </div>
                 <h3 className="text-lg font-semibold text-[#0E2C40] mb-2">{item.title}</h3>
                 <p className="text-[#1A4A5A] text-sm leading-relaxed">{item.desc}</p>
               </div>

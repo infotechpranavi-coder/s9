@@ -30,30 +30,175 @@ const COMMERCIAL_CLIENTS = [
   'Haritage Novandie Foods Pvt. Ltd – Palghar',
 ];
 
-const RESIDENTIAL_IMAGES = [
-  'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&h=400&fit=crop',
-];
-
 const RESIDENTIAL_PROJECTS = [
-  { bhk: '3 BHK', location: 'Palghar, Thane' },
-  { bhk: '1 BHK', location: 'Santacruz, Mumbai' },
-  { bhk: '2 BHK', location: 'Kharghar, Navi Mumbai' },
-  { bhk: '2 BHK', location: 'Raunak Park, Thane' },
-  { bhk: '2 BHK', location: 'Naupada, Thane' },
-  { bhk: '2 BHK', location: 'Virar' },
+  {
+    bhk: 'Designer Wall Mural Feature',
+    location: 'Virar',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM.jpeg',
+  },
+  {
+    bhk: 'Premium Decorative Paneling',
+    location: 'Palghar, Thane',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.18%20PM.jpeg',
+  },
+  {
+    bhk: 'Statement Entryway Concept',
+    location: 'Santacruz, Mumbai',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM.jpeg',
+  },
+  {
+    bhk: 'Luxury Accent Installation',
+    location: 'Kharghar, Navi Mumbai',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.19%20PM.jpeg',
+  },
+  {
+    bhk: 'Artful Living Wall',
+    location: 'Raunak Park, Thane',
+    image: '/image.png',
+  },
+  {
+    bhk: 'Devotional Feature Niche',
+    location: 'Thane West',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Refined Interior Corner',
+    location: 'Mira Road, Mumbai',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.21%20PM.jpeg',
+  },
+  {
+    bhk: 'Bedroom Accent Styling',
+    location: 'Naupada, Thane',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM%20(2).jpeg',
+  },
+  {
+    bhk: 'Contemporary Lounge Composition',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.17%20PM.jpeg',
+  },
+  {
+    bhk: 'Soft Luxury Bedroom Suite',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.18%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Entrance Console and Devotional Niche',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.18%20PM%20(2).jpeg',
+  },
+  {
+    bhk: 'Marble TV Feature Wall',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.18%20PM.jpeg',
+  },
+  {
+    bhk: 'Integrated Bedroom Media Unit',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.13%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Elegant Ceiling and Wardrobe Suite',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.06%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Minimalist Bedroom Perspective',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.07%20PM%20(3).jpeg',
+  },
+  {
+    bhk: 'Refined Storage and Bed Composition',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.07%20PM%20(4).jpeg',
+  },
+  {
+    bhk: 'Warm Neutral Living Detail',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.08%20PM%20(3).jpeg',
+  },
+  {
+    bhk: 'Feature Wall and Seating Concept',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.08%20PM%20(4).jpeg',
+  },
+  {
+    bhk: 'Textured Bedroom Panel Design',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.10%20PM.jpeg',
+  },
+  {
+    bhk: 'Modern Entertainment Wall',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.10%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Layered Bedroom Lighting Scheme',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.13%20PM%20(3).jpeg',
+  },
+  {
+    bhk: 'Tailored Wardrobe Elevation',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.14%20PM.jpeg',
+  },
+  {
+    bhk: 'Bedroom Storage Detailing',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.14%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Clean-Lined Interior Styling',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.15%20PM.jpeg',
+  },
+  {
+    bhk: 'Contemporary Bedroom Finish Palette',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.15%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Soft-Tone Bedroom Showcase',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.17%20PM%20(1).jpeg',
+  },
+  {
+    bhk: 'Bedroom Joinery and Lighting View',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.17%20PM%20(2).jpeg',
+  },
+  {
+    bhk: 'Coordinated Interior Detail Frame',
+    location: 'Residential Project',
+    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.17%20PM%20(5).jpeg',
+  },
 ];
 
-const ONGOING_PROJECTS = [
-  'Duplex Bungalow – Balkum, Thane',
-  'Novonesis – Synergia Life Sciences Pvt. Ltd – Wada, Bhiwandi',
-  'Super Air Solutions – Naupada, Thane',
-  'Jindal Stainless Steelway Limited (Phase 2) – Patalganga, Panvel',
-  'Fablab Engineering India Pvt. Ltd – Thane',
+const ONGOING_PROJECT_CARDS = [
+  {
+    title: 'Duplex Bungalow',
+    location: 'Balkum, Thane',
+    category: 'Residential',
+  },
+  {
+    title: 'Novonesis - Synergia Life Sciences Pvt. Ltd',
+    location: 'Wada, Bhiwandi',
+    category: 'Corporate',
+  },
+  {
+    title: 'Super Air Solutions',
+    location: 'Naupada, Thane',
+    category: 'Commercial',
+  },
+  {
+    title: 'Jindal Stainless Steelway Limited (Phase 2)',
+    location: 'Patalganga, Panvel',
+    category: 'Industrial',
+  },
+  {
+    title: 'Fablab Engineering India Pvt. Ltd',
+    location: 'Thane',
+    category: 'Corporate',
+  },
 ];
 
 export default function ProjectsPage() {
@@ -75,7 +220,7 @@ export default function ProjectsPage() {
         >
           <source src="/8347237-uhd_3840_2160_25fps%20(1).mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#0E2C40]/60" aria-hidden />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <Link href="/" className="inline-flex items-center gap-2 text-sm text-white/90 hover:text-white mb-8 transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
             <ArrowLeft className="h-4 w-4" /> Back to Home
@@ -97,7 +242,7 @@ export default function ProjectsPage() {
 
       {/* Section 1: Our Prestigious Commercial Clients – glass flip cards */}
       <section className="py-20 md:py-28 bg-[#f0f5f4] border-t border-[#0E2C40]/10">
-        <div className="max-w-6xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-semibold text-[#0E2C40] mb-4 tracking-tight">
             Our Prestigious Commercial Clients
           </h2>
@@ -172,77 +317,112 @@ export default function ProjectsPage() {
           <h2 className="text-2xl md:text-3xl font-semibold text-[#0E2C40] mb-4 tracking-tight">
             Residential Interior Projects
           </h2>
-          <p className="text-[#1A4A5A] mb-10 max-w-xl">Completed residential projects with interior finishes.</p>
-          <div className="relative -mx-6 md:-mx-8">
-            <div className="overflow-hidden">
-              <motion.div
-                className="flex gap-5 w-max"
-                animate={{ x: [0, -(300 * RESIDENTIAL_PROJECTS.length + 20 * (RESIDENTIAL_PROJECTS.length - 1))] }}
-                transition={{
-                  x: { repeat: Infinity, repeatType: 'loop', duration: 28, ease: 'linear' },
-                }}
-              >
-                {[1, 2].map((copy) => (
-                  <div key={copy} className="flex gap-5 flex-shrink-0 pr-5">
-                    {RESIDENTIAL_PROJECTS.map((project, i) => {
-                      const img = RESIDENTIAL_IMAGES[i % RESIDENTIAL_IMAGES.length];
-                      return (
-                        <div
-                          key={`${copy}-${i}`}
-                          className="group flex-shrink-0 w-[280px] md:w-[300px] rounded-2xl overflow-hidden border border-[#0E2C40]/10 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-[#148D8D]/40 hover:shadow-xl hover:shadow-[#148D8D]/10"
-                          style={{
-                            background: 'linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(232,240,239,0.6) 100%)',
-                            boxShadow: '0 4px 24px rgba(14,44,64,0.08), inset 0 1px 0 rgba(255,255,255,0.8)',
-                          }}
-                        >
-                          <div className="relative h-[180px] md:h-[200px] overflow-hidden">
-                            <img
-                              src={img}
-                              alt=""
-                              className="w-full h-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
-                              aria-hidden
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-[#0E2C40]/60 via-transparent to-transparent" />
-                            <span
-                              className="absolute top-3 left-3 rounded-full bg-white/95 backdrop-blur px-3 py-1.5 text-sm font-semibold text-[#0E2C40] border border-[#0E2C40]/10 shadow-sm"
-                            >
-                              {project.bhk}
-                            </span>
-                          </div>
-                          <div className="p-4 flex items-center gap-2 text-[#1A4A5A]">
-                            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#148D8D] shrink-0" aria-hidden />
-                            <span className="text-sm font-medium">{project.location}</span>
-                          </div>
-                        </div>
-                      );
-                    })}
+          <p className="text-[#1A4A5A] mb-10 max-w-xl">
+            Completed residential projects and bespoke interior details showcased with real site images.
+          </p>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {RESIDENTIAL_PROJECTS.map((project, i) => {
+              return (
+                <div
+                  key={`${project.location}-${project.bhk}`}
+                  className="group overflow-hidden rounded-[24px] border border-[#0E2C40]/8 bg-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0E2C40]/8"
+                  style={{
+                    boxShadow: '0 10px 28px rgba(14,44,64,0.06)',
+                  }}
+                >
+                  <div className="relative h-[260px] overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={`${project.bhk} project at ${project.location}`}
+                      className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E2C40]/22 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   </div>
-                ))}
-              </motion.div>
-            </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Section 3: Current Ongoing Projects */}
-      <section className="py-20 md:py-28 bg-[#f8faf9] border-t border-[#0E2C40]/10">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#0E2C40] mb-12 tracking-tight">
-            Current Ongoing Projects
-          </h2>
-          <div className="relative pl-5 md:pl-6">
-            <div className="absolute left-0 top-2 bottom-2 w-px bg-gradient-to-b from-[#148D8D]/60 via-[#0E2C40]/20 to-transparent" />
-            {ONGOING_PROJECTS.map((project, i) => (
+      <section className="py-20 md:py-28 bg-[linear-gradient(180deg,#f8faf9_0%,#eef5f3_100%)] border-t border-[#0E2C40]/10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid gap-8 lg:grid-cols-[0.92fr_1.25fr] lg:items-start">
+            <div className="relative overflow-hidden rounded-[32px] border border-[#0E2C40]/10 bg-[#0E2C40] px-7 py-8 md:px-9 md:py-10 text-white shadow-[0_24px_70px_rgba(14,44,64,0.18)]">
               <div
-                key={i}
-                className="group relative flex items-start gap-4 py-6 border-b border-[#0E2C40]/10 last:border-b-0 hover:border-[#148D8D]/30 transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]"
-              >
-                <span className="absolute -left-5 md:-left-6 top-7 h-2 w-2 rounded-full bg-[#148D8D] shrink-0 group-hover:bg-[#1ba3a3] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]" aria-hidden />
-                <p className="text-[#1A4A5A] text-sm md:text-base leading-relaxed pt-0.5 group-hover:text-[#0E2C40] transition-colors duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                  {project}
+                className="absolute inset-0 opacity-90"
+                aria-hidden
+                style={{
+                  background:
+                    'radial-gradient(circle at top right, rgba(125,211,211,0.32), transparent 34%), linear-gradient(160deg, rgba(255,255,255,0.06), transparent 52%)',
+                }}
+              />
+              <div className="relative">
+                <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-[#7dd3d3]">
+                  Active Pipeline
+                </span>
+                <h2 className="mt-5 text-3xl md:text-4xl font-semibold tracking-tight">
+                  Current Ongoing Projects
+                </h2>
+                <p className="mt-4 max-w-md text-sm md:text-base leading-relaxed text-white/78">
+                  Live assignments across residential, corporate, commercial, and industrial spaces,
+                  each progressing with tailored planning, execution, and finish coordination.
                 </p>
+
+                <div className="mt-8 grid grid-cols-2 gap-4">
+                  <div className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
+                    <p className="text-2xl font-semibold">{ONGOING_PROJECT_CARDS.length}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/62">Live Projects</p>
+                  </div>
+                  <div className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
+                    <p className="text-2xl font-semibold">4</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/62">Project Types</p>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
+
+            <div className="grid gap-5 sm:grid-cols-2">
+              {ONGOING_PROJECT_CARDS.map((project, i) => (
+                <div
+                  key={`${project.title}-${project.location}`}
+                  className="group relative overflow-hidden rounded-[28px] border border-[#0E2C40]/10 bg-white p-6 shadow-[0_16px_45px_rgba(14,44,64,0.07)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1.5 hover:border-[#148D8D]/25 hover:shadow-[0_22px_55px_rgba(14,44,64,0.12)]"
+                >
+                  <div
+                    className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#148D8D] via-[#7dd3d3] to-transparent opacity-70"
+                    aria-hidden
+                  />
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#e8f6f4] text-sm font-semibold text-[#148D8D] transition-colors duration-300 group-hover:bg-[#148D8D] group-hover:text-white">
+                      {String(i + 1).padStart(2, '0')}
+                    </div>
+                    <span className="inline-flex rounded-full bg-[#0E2C40]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0E2C40]/70">
+                      {project.category}
+                    </span>
+                  </div>
+
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold leading-snug text-[#0E2C40]">
+                      {project.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-relaxed text-[#1A4A5A]">
+                      {project.location}
+                    </p>
+                  </div>
+
+                  <div className="mt-6 flex items-center justify-between border-t border-[#0E2C40]/8 pt-4">
+                    <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[#148D8D]">
+                      <span className="h-2 w-2 rounded-full bg-[#148D8D]" aria-hidden />
+                      In Progress
+                    </span>
+                    <span className="text-xs text-[#0E2C40]/45">
+                      Project {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -250,17 +430,21 @@ export default function ProjectsPage() {
       {/* CTA */}
       <section className="relative py-20 bg-[#e8f0ef] border-t border-[#0E2C40]/10 overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1600&h=600&fit=crop"
-            alt=""
-            className="h-full w-full object-cover opacity-40"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="h-full w-full object-cover"
             aria-hidden
-          />
+          >
+            <source src="/7578542-uhd_3840_2160_30fps.mp4" type="video/mp4" />
+          </video>
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#f8faf9]/95 via-[#e8f0ef]/95 to-[#e8f0ef]/98" aria-hidden />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0E2C40] mb-4">Have a Project in Mind?</h2>
-          <p className="text-[#1A4A5A] mb-8">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Have a Project in Mind?</h2>
+          <p className="text-white/85 mb-8">
             Share your brief and we&apos;ll deliver a tailored interior solution.
           </p>
           <Link
@@ -314,3 +498,4 @@ export default function ProjectsPage() {
     </div>
   );
 }
+

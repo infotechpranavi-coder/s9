@@ -118,7 +118,7 @@ const WHY_CHOOSE = [
   { icon: '✓', title: 'Client Satisfaction', desc: 'Long-term relationships with corporate clients who consistently reorder our services' },
 ];
 
-const CAROUSEL_AUTOPLAY_DELAY = 4500; // ms
+const CAROUSEL_AUTOPLAY_DELAY = 2500; // ms
 
 export default function ServicesPage() {
   const [sliderIndex, setSliderIndex] = useState(0);
@@ -169,7 +169,7 @@ export default function ServicesPage() {
         >
           <source src="/0_Office_Workspace_3840x2160.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[#0E2C40]/60" aria-hidden />
+        <div className="absolute inset-0 bg-black/60" aria-hidden />
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <motion.div
             animate={{ rotate: 360 }}
