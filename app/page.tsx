@@ -6,135 +6,13 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
 
-const PROJECTS = [
-  { title: 'Corporate Office Interior', location: 'Andheri', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.20%20PM%20(1).jpeg' },
-  { title: 'Retail Interior Design', location: 'BKC', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.20%20PM.jpeg' },
-  { title: 'Industrial Workspace', location: 'Panvel', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.21%20PM%20(1).jpeg' },
-  { title: 'Commercial Office Space', location: 'Thane', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.21%20PM.jpeg' },
-  { title: 'Executive Cabin & Meeting Rooms', location: 'Lower Parel', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.24%20PM%20(1).jpeg' },
-  { title: 'Co-Working Space', location: 'Bandra', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.24%20PM.jpeg' },
-  { title: 'Showroom Interior', location: 'Ghatkopar', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.26%20PM%20(1).jpeg' },
-  { title: 'Healthcare Facility', location: 'Navi Mumbai', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.26%20PM.jpeg' },
-  { title: 'Restaurant & CafÃ©', location: 'Santacruz', image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=400&fit=crop' },
-  { title: 'Residential Turnkey', location: 'Palghar', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.27%20PM%20(1).jpeg' },
-  { title: 'Warehouse Office Block', location: 'Bhiwandi', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.28%20PM.jpeg' },
-  { title: 'Bank Branch Interior', location: 'Thane West', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.27%20PM.jpeg' },
-  { title: 'Designer Wall Mural Feature', location: 'Mumbai', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM.jpeg' },
-  { title: 'Premium Decorative Paneling', location: 'Thane', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.18%20PM.jpeg' },
-  { title: 'Statement Entryway Concept', location: 'Navi Mumbai', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM.jpeg' },
-  { title: 'Luxury Accent Installation', location: 'Andheri East', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM%20(1).jpeg' },
-];
-
-const PROCESS_STEPS = [
-  { num: '01', title: 'Consultation', desc: 'Understanding your vision and requirements' },
-  { num: '02', title: 'Requirement Analysis', desc: 'Detailed assessment of space and needs' },
-  { num: '03', title: 'Space Planning', desc: 'Creating optimized layouts and designs' },
-  { num: '04', title: 'Concept Design', desc: 'Developing visual concepts and mood boards' },
-  { num: '05', title: 'Material Selection', desc: 'Choosing premium materials and finishes' },
-  { num: '06', title: 'Execution & Delivery', desc: 'Professional execution and project completion' }
-];
-
-const CLIENTS = [
-  'DHL â€“ Andheri Mumbai',
-  'Helious â€“ Andheri Mumbai',
-  'MSRLM â€“ Belapur Navi Mumbai',
-  'R & B Development â€“ BKC Mumbai',
-  'TATA AIG â€“ Lower Parel Mumbai',
-  'RMC â€“ Ghatkopar Mumbai',
-  'Endress + Houser â€“ Mumbai, Delhi, Hyderabad, Gujarat',
-  'Polychem Fabricators â€“ Thane & Bhiwandi',
-  'LIC Housing Finance â€“ Thane',
-  'Jindal Stainless Steelway Limited â€“ Panvel',
-  'Heritage Novandie Foods Pvt Ltd â€“ Palghar'
-];
-
-const TESTIMONIALS = [
-  {
-    quote: 'S9 Enterprises handled our office interiors with real professionalism. The finishing, coordination, and handover quality were exactly what we expected.',
-    name: 'Amit Mehra',
-    role: 'Operations Head',
-    company: 'Corporate Client',
-    location: 'Andheri, Mumbai',
-    project: 'Office Interior Execution',
-    rating: 5,
-  },
-  {
-    quote: 'Their team stayed responsive throughout the project and kept the work moving smoothly. The final outcome looked clean, premium, and well planned.',
-    name: 'Ritika Shah',
-    role: 'Director',
-    company: 'Workspace Client',
-    location: 'BKC, Mumbai',
-    project: 'Commercial Workspace',
-    rating: 5,
-  },
-  {
-    quote: 'From design suggestions to site execution, everything felt organized and transparent. We especially appreciated their attention to details and timelines.',
-    name: 'Nilesh Patil',
-    role: 'Business Owner',
-    company: 'Retail Client',
-    location: 'Thane',
-    project: 'Showroom Interior',
-    rating: 5,
-  },
-  {
-    quote: 'The team understood our functional requirements very quickly and translated them into a space that feels efficient and polished every day.',
-    name: 'Pooja Nair',
-    role: 'Admin Lead',
-    company: 'Corporate Client',
-    location: 'Lower Parel, Mumbai',
-    project: 'Office Renovation',
-    rating: 5,
-  },
-  {
-    quote: 'We wanted a modern but practical residential interior, and they delivered exactly that. The material selection and execution quality were impressive.',
-    name: 'Karan Desai',
-    role: 'Homeowner',
-    company: 'Residential Client',
-    location: 'Palghar',
-    project: 'Residential Turnkey',
-    rating: 5,
-  },
-  {
-    quote: 'Communication was clear from start to finish, and the team handled site challenges without delays. The result felt premium and thoughtfully designed.',
-    name: 'Sneha Kulkarni',
-    role: 'Project Coordinator',
-    company: 'Commercial Client',
-    location: 'Navi Mumbai',
-    project: 'Interior Fit-Out',
-    rating: 5,
-  },
-  {
-    quote: 'Their execution team was disciplined, punctual, and easy to work with. The completed space reflects quality workmanship in every detail.',
-    name: 'Rahul Verma',
-    role: 'Facility Manager',
-    company: 'Industrial Client',
-    location: 'Panvel',
-    project: 'Industrial Office Block',
-    rating: 5,
-  },
-  {
-    quote: 'S9 Enterprises gave us confidence throughout the project. They balanced aesthetics with usability and delivered a space our team genuinely enjoys.',
-    name: 'Neha Bhatia',
-    role: 'Founder',
-    company: 'Business Client',
-    location: 'Thane West',
-    project: 'Turnkey Interior Project',
-    rating: 5,
-  },
-];
-
-const TESTIMONIAL_MARQUEE = [
-  'Exceptional',
-  'Professional',
-  'On time',
-  'Quality',
-  'Trusted',
-  'â€¢',
-  'Detail-oriented',
-  'Turnkey',
-  'Pan India',
-  'â€¢',
-];
+import { 
+  PROJECTS, 
+  PROCESS_STEPS, 
+  CLIENTS, 
+  TESTIMONIALS, 
+  TESTIMONIAL_MARQUEE 
+} from '@/lib/projects-data';
 
 const motionTransition = { duration: 0.6, ease: [0.32, 0.72, 0, 1] as const };
 const motionTransitionFast = { duration: 0.45, ease: [0.32, 0.72, 0, 1] as const };
@@ -404,17 +282,17 @@ export default function Home() {
                       className="h-full w-full object-cover transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105 group-hover:brightness-105"
                     />
                   </div>
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0E2C40]/60 via-[#0E2C40]/10 to-transparent" />
-                  <div className="absolute inset-x-4 bottom-4 flex items-center justify-between text-xs text-white">
-                    <p className="font-semibold text-sm md:text-base">{project.title}</p>
+                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-90 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-x-5 bottom-5 flex flex-col gap-1 text-white">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#7dd3d3] opacity-0 transition-all duration-300 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
+                      {project.location}
+                    </p>
+                    <p className="text-sm font-semibold md:text-base leading-tight drop-shadow-sm">
+                      {project.title}
+                    </p>
                   </div>
                 </div>
 
-                <div className="flex-1 px-5 pb-5 pt-4 flex items-center justify-end text-xs text-[#1A4A5A]">
-                  <span className="inline-flex h-7 w-7 items-center justify-center rounded-full bg-[#e8f0ef] text-[#148D8D] group-hover:bg-[#148D8D] group-hover:text-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)]">
-                    <ChevronRight className="h-3 w-3" />
-                  </span>
-                </div>
               </motion.article>
             ))}
           </div>
@@ -576,16 +454,10 @@ export default function Home() {
                   <p className="mb-4 text-[15px] italic leading-7 text-[#0E2C40]">
                     &ldquo;{testimonial.quote}&rdquo;
                   </p>
-                  <div className="space-y-1.5 border-t border-[#0E2C40]/8 pt-4">
+                  <div className="space-y-1 border-t border-[#0E2C40]/8 pt-4">
                     <p className="text-sm font-semibold text-[#0E2C40]">{testimonial.name}</p>
-                    <p className="text-xs text-[#1A4A5A]">
-                      {testimonial.role} • {testimonial.company}
-                    </p>
-                    <p className="text-xs text-[#1A4A5A]">
-                      {testimonial.project} • {testimonial.location}
-                    </p>
-                    <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-[#148D8D]">
-                      {testimonial.rating}/5 Rating
+                    <p className="text-xs text-[#1A4A5A]/80">
+                      {testimonial.role}, {testimonial.company}
                     </p>
                   </div>
                 </div>

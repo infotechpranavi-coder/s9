@@ -1,208 +1,36 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronRight, ArrowLeft } from 'lucide-react';
+import { ChevronRight, ArrowLeft, Star, Plus } from 'lucide-react';
 import Navbar from '@/components/Navbar';
-import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useRef, useEffect } from 'react';
 
-const CLIENT_IMAGES = [
-  'https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?w=600&h=400&fit=crop',
-  'https://images.unsplash.com/photo-1497215842964-222b430dc094?w=600&h=400&fit=crop',
-];
-
-const COMMERCIAL_CLIENTS = [
-  'DHL – Andheri, Mumbai',
-  'Helious – Andheri, Mumbai',
-  'MSRLM – Belapur, Navi Mumbai',
-  'R & B Development – BKC, Mumbai',
-  'TATA AIG – Lower Parel, Mumbai',
-  'RMC – Ghatkopar, Mumbai',
-  'Endress + Houser – Mumbai | New Delhi | Hyderabad | Gujarat',
-  'Polychem Fabricators – Thane | Bhiwandi',
-  'LIC Housing Finance – Thane West',
-  'Jindal Stainless Steelway Limited (Phase 1) – Patalganga, Panvel',
-  'Rukhmini Enterprises – Ambernath | Kalyan',
-  'Haritage Novandie Foods Pvt. Ltd – Palghar',
-];
-
-const RESIDENTIAL_PROJECTS = [
-  {
-    bhk: 'Designer Wall Mural Feature',
-    location: 'Virar',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM.jpeg',
-  },
-  {
-    bhk: 'Premium Decorative Paneling',
-    location: 'Palghar, Thane',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.18%20PM.jpeg',
-  },
-  {
-    bhk: 'Statement Entryway Concept',
-    location: 'Santacruz, Mumbai',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM.jpeg',
-  },
-  {
-    bhk: 'Luxury Accent Installation',
-    location: 'Kharghar, Navi Mumbai',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.19%20PM.jpeg',
-  },
-  {
-    bhk: 'Artful Living Wall',
-    location: 'Raunak Park, Thane',
-    image: '/image.png',
-  },
-  {
-    bhk: 'Devotional Feature Niche',
-    location: 'Thane West',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Refined Interior Corner',
-    location: 'Mira Road, Mumbai',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.21%20PM.jpeg',
-  },
-  {
-    bhk: 'Bedroom Accent Styling',
-    location: 'Naupada, Thane',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM%20(2).jpeg',
-  },
-  {
-    bhk: 'Contemporary Lounge Composition',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.17%20PM.jpeg',
-  },
-  {
-    bhk: 'Soft Luxury Bedroom Suite',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.18%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Entrance Console and Devotional Niche',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.18%20PM%20(2).jpeg',
-  },
-  {
-    bhk: 'Marble TV Feature Wall',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-07%20at%2012.38.18%20PM.jpeg',
-  },
-  {
-    bhk: 'Integrated Bedroom Media Unit',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.13%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Elegant Ceiling and Wardrobe Suite',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.06%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Minimalist Bedroom Perspective',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.07%20PM%20(3).jpeg',
-  },
-  {
-    bhk: 'Refined Storage and Bed Composition',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.07%20PM%20(4).jpeg',
-  },
-  {
-    bhk: 'Warm Neutral Living Detail',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.08%20PM%20(3).jpeg',
-  },
-  {
-    bhk: 'Feature Wall and Seating Concept',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.08%20PM%20(4).jpeg',
-  },
-  {
-    bhk: 'Textured Bedroom Panel Design',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.10%20PM.jpeg',
-  },
-  {
-    bhk: 'Modern Entertainment Wall',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.10%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Layered Bedroom Lighting Scheme',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.13%20PM%20(3).jpeg',
-  },
-  {
-    bhk: 'Tailored Wardrobe Elevation',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.14%20PM.jpeg',
-  },
-  {
-    bhk: 'Bedroom Storage Detailing',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.14%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Clean-Lined Interior Styling',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.15%20PM.jpeg',
-  },
-  {
-    bhk: 'Contemporary Bedroom Finish Palette',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.15%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Soft-Tone Bedroom Showcase',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.17%20PM%20(1).jpeg',
-  },
-  {
-    bhk: 'Bedroom Joinery and Lighting View',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.17%20PM%20(2).jpeg',
-  },
-  {
-    bhk: 'Coordinated Interior Detail Frame',
-    location: 'Residential Project',
-    image: '/WhatsApp%20Image%202026-05-08%20at%2012.01.17%20PM%20(5).jpeg',
-  },
-];
-
-const ONGOING_PROJECT_CARDS = [
-  {
-    title: 'Duplex Bungalow',
-    location: 'Balkum, Thane',
-    category: 'Residential',
-  },
-  {
-    title: 'Novonesis - Synergia Life Sciences Pvt. Ltd',
-    location: 'Wada, Bhiwandi',
-    category: 'Corporate',
-  },
-  {
-    title: 'Super Air Solutions',
-    location: 'Naupada, Thane',
-    category: 'Commercial',
-  },
-  {
-    title: 'Jindal Stainless Steelway Limited (Phase 2)',
-    location: 'Patalganga, Panvel',
-    category: 'Industrial',
-  },
-  {
-    title: 'Fablab Engineering India Pvt. Ltd',
-    location: 'Thane',
-    category: 'Corporate',
-  },
-];
+import { 
+  CLIENT_IMAGES, 
+  COMMERCIAL_CLIENTS, 
+  RESIDENTIAL_PROJECTS, 
+  ONGOING_PROJECT_CARDS 
+} from '@/lib/projects-data';
 
 export default function ProjectsPage() {
-  const [flippedIndex, setFlippedIndex] = useState<number | null>(null);
+  const [visibleResidential, setVisibleResidential] = useState(8);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const showMore = () => {
+    setVisibleResidential(prev => Math.min(prev + 8, RESIDENTIAL_PROJECTS.length));
+  };
+
+  useEffect(() => {
+    if (visibleResidential > 8 && containerRef.current) {
+      setTimeout(() => {
+        containerRef.current?.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'end' 
+        });
+      }, 100);
+    }
+  }, [visibleResidential]);
 
   return (
     <div className="min-h-screen bg-[#f8faf9] text-[#0E2C40]">
@@ -240,112 +68,157 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Section 1: Our Prestigious Commercial Clients – glass flip cards */}
+      {/* Section 1: Our Prestigious Commercial Clients – Showcase Grid */}
       <section className="py-20 md:py-28 bg-[#f0f5f4] border-t border-[#0E2C40]/10">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#0E2C40] mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0E2C40] mb-3 tracking-tight">
             Our Prestigious Commercial Clients
           </h2>
-          <p className="text-[#1A4A5A] mb-12 max-w-xl">Click a card to flip and see project imagery.</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: '1000px' }}>
+          <p className="text-[#1A4A5A] mb-12 max-w-xl text-lg">Leading organizations that trust S9 Enterprises for their interior transformation.</p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[220px]">
             {COMMERCIAL_CLIENTS.map((client, i) => {
-              const isFlipped = flippedIndex === i;
               const imageUrl = CLIENT_IMAGES[i % CLIENT_IMAGES.length];
+              
+              // Patterns for grid spans similar to the provided image
+              const configs = [
+                { span: 'col-span-1 row-span-1' },
+                { span: 'col-span-1 row-span-1' },
+                { span: 'col-span-2 row-span-2' },
+                { span: 'col-span-2 row-span-2' },
+                { span: 'col-span-1 row-span-1' },
+                { span: 'col-span-1 row-span-1' },
+              ];
+              const config = configs[i % configs.length];
+              
+              // Split client name and location
+              const [name, ...locParts] = client.split(' – ');
+              const location = locParts.join(' – ');
+
               return (
-                <div
+                <motion.div
                   key={i}
-                  className="h-[220px] cursor-pointer"
-                  style={{ perspective: '1000px' }}
-                  onClick={() => setFlippedIndex(isFlipped ? null : i)}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -8, scale: 1.02 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className={`group relative overflow-hidden rounded-[2rem] p-6 shadow-xl ${config.span} bg-[#0E2C40] flex flex-col justify-between text-white cursor-pointer transition-all duration-500`}
                 >
-                  <div
-                    className="relative w-full h-full transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]"
-                    style={{
-                      transformStyle: 'preserve-3d',
-                      transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
-                    }}
-                  >
-                    {/* Front: glass card with client name */}
-                    <div
-                      className="absolute inset-0 rounded-2xl overflow-hidden border border-[#0E2C40]/10 shadow-lg flex flex-col justify-center px-6"
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        background: 'linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(232,240,239,0.6) 100%)',
-                        backdropFilter: 'blur(12px)',
-                        boxShadow: '0 8px 32px rgba(14,44,64,0.12), inset 0 1px 0 rgba(255,255,255,0.5)',
-                      }}
-                    >
-                      <span className="inline-block w-2 h-2 rounded-full bg-[#148D8D] mb-3" aria-hidden />
-                      <p className="text-[#0E2C40] font-semibold text-sm md:text-base leading-snug pr-2">
-                        {client}
-                      </p>
-                      <p className="text-[#148D8D] text-xs mt-2 font-medium">Click to view</p>
-                    </div>
-
-                    {/* Back: image */}
-                    <div
-                      className="absolute inset-0 rounded-2xl overflow-hidden border border-[#0E2C40]/10 shadow-lg"
-                      style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transform: 'rotateY(180deg)',
-                      }}
-                    >
-                      <img
-                        src={imageUrl}
-                        alt=""
-                        className="w-full h-full object-cover"
-                        aria-hidden
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0E2C40]/70 to-transparent" />
-                      <div className="absolute bottom-3 left-3 right-3">
-                        <p className="text-white text-sm font-semibold drop-shadow-md line-clamp-2">{client}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 2: Residential Interior Projects – motion slider with BHK interior photos */}
-      <section className="py-20 md:py-28 bg-white border-t border-[#0E2C40]/10 overflow-hidden">
-        <div className="max-w-6xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-semibold text-[#0E2C40] mb-4 tracking-tight">
-            Residential Interior Projects
-          </h2>
-          <p className="text-[#1A4A5A] mb-10 max-w-xl">
-            Completed residential projects and bespoke interior details showcased with real site images.
-          </p>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {RESIDENTIAL_PROJECTS.map((project, i) => {
-              return (
-                <div
-                  key={`${project.location}-${project.bhk}`}
-                  className="group overflow-hidden rounded-[24px] border border-[#0E2C40]/8 bg-white transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1 hover:shadow-xl hover:shadow-[#0E2C40]/8"
-                  style={{
-                    boxShadow: '0 10px 28px rgba(14,44,64,0.06)',
-                  }}
-                >
-                  <div className="relative h-[260px] overflow-hidden">
+                  {/* Background Image - Natural look without color tint */}
+                  <div className="absolute inset-0 z-0">
                     <img
-                      src={project.image}
-                      alt={`${project.bhk} project at ${project.location}`}
-                      className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                      src={imageUrl}
+                      alt=""
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0E2C40]/22 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                    {/* Subtle bottom gradient for text contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
                   </div>
-                </div>
+
+                  {/* Minimal Content: Title and Location only */}
+                  <div className="relative z-10 mt-auto">
+                    <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-[#7dd3d3] mb-1 opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                      Commercial Project
+                    </p>
+                    <h3 className={`${config.span.includes('row-span-2') ? 'text-xl md:text-3xl' : 'text-lg md:text-xl'} font-bold leading-tight drop-shadow-lg`}>
+                      {name}
+                    </h3>
+                    <p className="text-xs md:text-sm text-white/70 font-medium mt-1">
+                      {location}
+                    </p>
+                  </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
       </section>
 
-      {/* Section 3: Current Ongoing Projects */}
+      <section className="py-20 md:py-28 bg-white border-t border-[#0E2C40]/10 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0E2C40] mb-3 tracking-tight">
+                Residential Interior Projects
+              </h2>
+              <p className="text-[#1A4A5A] max-w-xl text-lg">
+                Completed residential projects and bespoke interior details showcased with real site images.
+              </p>
+            </div>
+            <div className="text-sm font-semibold text-[#148D8D] bg-[#148D8D]/5 px-4 py-2 rounded-full border border-[#148D8D]/10">
+              {RESIDENTIAL_PROJECTS.length} Projects Total
+            </div>
+          </div>
+
+          <div className="relative group">
+            <AnimatePresence>
+              {visibleResidential < RESIDENTIAL_PROJECTS.length && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute bottom-0 inset-x-0 h-60 bg-gradient-to-t from-white via-white/90 to-transparent z-10 pointer-events-none"
+                />
+              )}
+            </AnimatePresence>
+
+            <div 
+              ref={containerRef}
+              className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 scrollbar-hide overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)]"
+            >
+              <AnimatePresence mode="popLayout">
+                {RESIDENTIAL_PROJECTS.slice(0, visibleResidential).map((project, i) => {
+                  return (
+                    <motion.div
+                      key={`${project.location}-${project.bhk}-${i}`}
+                      initial={{ opacity: 0, y: 30 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.5, delay: (i % 8) * 0.08, ease: [0.32, 0.72, 0, 1] }}
+                      className="group overflow-hidden rounded-[2rem] border border-[#0E2C40]/8 bg-white transition-all duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#0E2C40]/12"
+                      style={{
+                        boxShadow: '0 10px 28px rgba(14,44,64,0.06)',
+                      }}
+                    >
+                      <div className="relative h-[280px] overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={`${project.bhk} project at ${project.location}`}
+                          className="h-full w-full object-cover transition-transform duration-1000 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        <div className="absolute bottom-6 inset-x-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                          <p className="text-white font-bold text-lg leading-tight">{project.bhk}</p>
+                          <p className="text-white/80 text-xs mt-1 font-medium">{project.location}</p>
+                        </div>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {visibleResidential < RESIDENTIAL_PROJECTS.length && (
+            <div className="mt-16 text-center">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={showMore}
+                className="inline-flex items-center gap-3 bg-[#148D8D] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-[#148D8D]/25 hover:bg-[#1ba3a3] transition-all duration-300 group"
+              >
+                <span>View Next 8 Projects</span>
+                <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-500" />
+              </motion.button>
+              <p className="mt-4 text-sm text-[#1A4A5A]/60 font-medium">
+                Showing {visibleResidential} of {RESIDENTIAL_PROJECTS.length} results
+              </p>
+            </div>
+          )}
+        </div>
+      </section>
+
       <section className="py-20 md:py-28 bg-[linear-gradient(180deg,#f8faf9_0%,#eef5f3_100%)] border-t border-[#0E2C40]/10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-[0.92fr_1.25fr] lg:items-start">
