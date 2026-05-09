@@ -13,7 +13,7 @@ export const PROJECTS = [
   { title: 'Bank Branch Interior', location: 'Thane West', image: '/WhatsApp%20Image%202026-03-10%20at%205.52.27%20PM.jpeg' },
   { title: 'Designer Wall Mural Feature', location: 'Mumbai', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM.jpeg' },
   { title: 'Premium Decorative Paneling', location: 'Thane', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.18%20PM.jpeg' },
-  { title: 'Statement Entryway Concept', location: 'Navi Mumbai', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM.jpeg' },
+  { title: 'Statement Entryway Concept', location: 'Navi Mumbai', image: '/statement-entryway.png' },
   { title: 'Luxury Accent Installation', location: 'Andheri East', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM%20(1).jpeg' },
 ];
 
@@ -50,7 +50,7 @@ export const COMMERCIAL_CLIENTS = [
 export const RESIDENTIAL_PROJECTS = [
   { bhk: 'Designer Wall Mural Feature', location: 'Virar', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.16%20PM.jpeg' },
   { bhk: 'Premium Decorative Paneling', location: 'Palghar, Thane', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.18%20PM.jpeg' },
-  { bhk: 'Statement Entryway Concept', location: 'Santacruz, Mumbai', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM.jpeg' },
+  { bhk: 'Statement Entryway Concept', location: 'Santacruz, Mumbai', image: '/statement-entryway.png' },
   { bhk: 'Luxury Accent Installation', location: 'Kharghar, Navi Mumbai', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.19%20PM.jpeg' },
   { bhk: 'Artful Living Wall', location: 'Raunak Park, Thane', image: '/image.png' },
   { bhk: 'Devotional Feature Niche', location: 'Thane West', image: '/WhatsApp%20Image%202026-05-07%20at%2012.37.22%20PM%20(1).jpeg' },
