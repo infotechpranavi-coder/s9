@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, ArrowRight, Instagram, Facebook, Youtube } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 
 export default function ContactPage() {
@@ -51,12 +51,12 @@ export default function ContactPage() {
           <div className="absolute -right-40 bottom-0 h-72 w-72 rounded-full border border-white/15" />
         </div>
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-[1.5fr,1fr] gap-10 items-center">
-            <div>
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
+            <div className="max-w-2xl">
               <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/30 px-4 py-1.5 text-[11px] font-medium tracking-[0.18em] uppercase text-white mb-5">
                 <span className="h-2 w-2 rounded-full bg-[#C1E1A7]" />
                 Contact S9 Studio
-        </div>
+              </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-white mb-4 leading-tight drop-shadow-md">
                 Let&apos;s design the
                 <span className="block text-[#C1E1A7]">workspace you imagined.</span>
@@ -82,15 +82,24 @@ export default function ContactPage() {
                 </a>
               </div>
             </div>
-            <div className="hidden lg:block">
-              <div className="rounded-3xl overflow-hidden shadow-[0_18px_45px_rgba(0,0,0,0.45)] border border-white/40">
-                <div className="relative h-64 md:h-72 lg:h-80">
-                  <img
-                    src="/WhatsApp%20Image%202026-03-10%20at%205.52.20%20PM%20(1).jpeg"
-                    alt="S9 Enterprises office interior"
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+
+            {/* Right side - Glass Effect Social Icons */}
+            <div className="w-full lg:w-auto mt-8 lg:mt-0">
+              <div className="rounded-3xl bg-white/10 backdrop-blur-md border border-white/20 p-8 shadow-2xl relative overflow-hidden inline-flex flex-col gap-6">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
+                <div className="relative z-10 flex flex-col gap-5 items-center">
+                  <h3 className="text-white font-semibold text-sm uppercase tracking-[0.2em]">Join The Vibe</h3>
+                  <div className="flex gap-4">
+                    <a href="https://www.instagram.com/s9_interiors?igsh=eHlpcm42MHo5MWd4" target="_blank" rel="noopener noreferrer" className="h-14 w-14 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all hover:scale-110 shadow-lg">
+                      <Instagram className="h-6 w-6" />
+                    </a>
+                    <a href="https://www.facebook.com/share/1Lg6wQZFgL/" target="_blank" rel="noopener noreferrer" className="h-14 w-14 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all hover:scale-110 shadow-lg">
+                      <Facebook className="h-6 w-6" />
+                    </a>
+                    <a href="#" className="h-14 w-14 rounded-2xl bg-white/15 backdrop-blur-lg border border-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-all hover:scale-110 shadow-lg">
+                      <Youtube className="h-6 w-6" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -133,77 +142,77 @@ export default function ContactPage() {
               <p className="text-[#1A4A5A] text-sm mb-8">We reply within 24 hours.</p>
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
-          <div>
+                  <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
                       placeholder="Your name"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                />
-              </div>
-              <div>
+                    />
+                  </div>
+                  <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
                       placeholder="you@example.com"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                />
-              </div>
+                    />
+                  </div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-5">
-              <div>
+                  <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Phone</label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+91 XXXXX XXXXX"
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 XXXXX XXXXX"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                />
-              </div>
-              <div>
+                    />
+                  </div>
+                  <div>
                     <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Subject</label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
                       placeholder="Project type or topic"
                       className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition"
-                />
+                    />
                   </div>
-              </div>
-              <div>
+                </div>
+                <div>
                   <label className="block text-xs font-medium text-[#1A4A5A] uppercase tracking-wider mb-2">Message</label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
+                  <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
                     rows={5}
                     placeholder="Tell us about your space, budget, and timeline..."
                     className="w-full px-4 py-3 rounded-xl bg-[#f8faf9] border border-[#0E2C40]/15 text-[#0E2C40] placeholder-[#1A4A5A]/60 focus:outline-none focus:border-[#148D8D] focus:ring-1 focus:ring-[#148D8D]/50 transition resize-none"
-                />
-              </div>
-              <button
-                type="submit"
+                  />
+                </div>
+                <button
+                  type="submit"
                   className="w-full rounded-xl bg-[#148D8D] py-3.5 text-white font-semibold hover:bg-[#1ba3a3] transition flex items-center justify-center gap-2"
-              >
-                <Send className="w-5 h-5" />
+                >
+                  <Send className="w-5 h-5" />
                   Send message
-              </button>
-            </form>
-          </div>
+                </button>
+              </form>
+            </div>
 
             {/* Side panel: studio map + reasons */}
             <div className="space-y-8">
@@ -212,7 +221,7 @@ export default function ContactPage() {
                 <div className="grid md:grid-cols-[1.1fr,1.2fr] gap-0 rounded-[1.4rem] overflow-hidden bg-white/96">
                   {/* Info side */}
                   <div className="p-5 md:p-6 flex flex-col justify-between bg-white/80">
-              <div>
+                    <div>
                       <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#148D8D] mb-2">
                         Visit our studio
                       </p>
@@ -259,8 +268,8 @@ export default function ContactPage() {
                       <MapPin className="w-3.5 h-3.5 text-[#148D8D]" />
                       Studio location
                     </div>
-              </div>
-              </div>
+                  </div>
+                </div>
               </div>
               <div className="rounded-2xl bg-white border border-[#0E2C40]/10 p-6 shadow-sm shadow-[#0E2C40]/5">
                 <h3 className="text-lg font-semibold text-[#0E2C40] mb-1">Why clients choose S9</h3>
@@ -286,6 +295,7 @@ export default function ContactPage() {
                   </li>
                 </ul>
               </div>
+
               <Link
                 href="/projects"
                 className="inline-flex items-center gap-2 text-[#148D8D] font-medium hover:text-[#1ba3a3] transition"
@@ -351,6 +361,19 @@ export default function ContactPage() {
               <p>+91 99301 11780</p>
               <p>s9enterprises18@gmail.com</p>
               <p>Thane (West), Mumbai</p>
+            </div>
+            
+            {/* Footer Socials */}
+            <div className="flex gap-4 mt-6">
+              <a href="https://www.instagram.com/s9_interiors?igsh=eHlpcm42MHo5MWd4" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Instagram className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
+              <a href="https://www.facebook.com/share/1Lg6wQZFgL/" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Facebook className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
+              <a href="#" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Youtube className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
             </div>
           </div>
         </div>

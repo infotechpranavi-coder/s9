@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronRight, ArrowLeft, Star, Plus } from 'lucide-react';
+import { ChevronRight, ArrowLeft, Star, Plus, Instagram, Facebook, Youtube } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
@@ -208,7 +208,7 @@ export default function ProjectsPage() {
                 onClick={showMore}
                 className="inline-flex items-center gap-3 bg-[#148D8D] text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl shadow-[#148D8D]/25 hover:bg-[#1ba3a3] transition-all duration-300 group"
               >
-                <span>View Next 8 Projects</span>
+                <span>View More</span>
                 <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-500" />
               </motion.button>
               <p className="mt-4 text-sm text-[#1A4A5A]/60 font-medium">
@@ -222,78 +222,108 @@ export default function ProjectsPage() {
       <section className="py-20 md:py-28 bg-[linear-gradient(180deg,#f8faf9_0%,#eef5f3_100%)] border-t border-[#0E2C40]/10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid gap-8 lg:grid-cols-[0.92fr_1.25fr] lg:items-start">
-            <div className="relative overflow-hidden rounded-[32px] border border-[#0E2C40]/10 bg-[#0E2C40] px-7 py-8 md:px-9 md:py-10 text-white shadow-[0_24px_70px_rgba(14,44,64,0.18)]">
-              <div
-                className="absolute inset-0 opacity-90"
-                aria-hidden
-                style={{
-                  background:
-                    'radial-gradient(circle at top right, rgba(125,211,211,0.32), transparent 34%), linear-gradient(160deg, rgba(255,255,255,0.06), transparent 52%)',
-                }}
-              />
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.32, 0.72, 0, 1] }}
+              className="relative overflow-hidden rounded-[40px] bg-[#0E2C40] p-10 md:p-12 text-white shadow-[0_40px_100px_rgba(14,44,64,0.25)] lg:sticky lg:top-24"
+            >
+              <div className="absolute inset-0 opacity-40">
+                <div className="absolute top-0 right-0 h-[500px] w-[500px] -translate-y-1/2 translate-x-1/2 rounded-full bg-[#148D8D]/30 blur-[120px]" />
+                <div className="absolute bottom-0 left-0 h-[300px] w-[300px] translate-y-1/2 -translate-x-1/2 rounded-full bg-blue-500/10 blur-[100px]" />
+              </div>
+              
               <div className="relative">
-                <span className="inline-flex rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-[#7dd3d3]">
-                  Active Pipeline
-                </span>
-                <h2 className="mt-5 text-3xl md:text-4xl font-semibold tracking-tight">
-                  Current Ongoing Projects
+                <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.25em] text-[#7dd3d3]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#7dd3d3] animate-pulse" />
+                  Live Pipeline
+                </div>
+                
+                <h2 className="mt-8 text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+                  Current <br />
+                  <span className="text-[#7dd3d3]">Ongoing</span> <br />
+                  Projects
                 </h2>
-                <p className="mt-4 max-w-md text-sm md:text-base leading-relaxed text-white/78">
-                  Live assignments across residential, corporate, commercial, and industrial spaces,
-                  each progressing with tailored planning, execution, and finish coordination.
+                
+                <p className="mt-8 max-w-md text-base leading-relaxed text-white/70">
+                  Active assignments across premium residential and corporate sectors, progressing with 
+                  precision execution and finish coordination.
                 </p>
 
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                  <div className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
-                    <p className="text-2xl font-semibold">{ONGOING_PROJECT_CARDS.length}</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/62">Live Projects</p>
+                <div className="mt-12 grid grid-cols-2 gap-6">
+                  <div className="group rounded-3xl border border-white/5 bg-white/[0.03] p-6 backdrop-blur-md transition-all hover:bg-white/5">
+                    <div className="text-4xl font-bold text-[#7dd3d3]">{ONGOING_PROJECT_CARDS.length}</div>
+                    <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-white/60">Live Projects</div>
                   </div>
-                  <div className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
-                    <p className="text-2xl font-semibold">4</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.18em] text-white/62">Project Types</p>
+                  <div className="group rounded-3xl border border-white/5 bg-white/[0.03] p-6 backdrop-blur-md transition-all hover:bg-white/5">
+                    <div className="text-4xl font-bold text-[#7dd3d3]">4</div>
+                    <div className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 group-hover:text-white/60">Sectors</div>
+                  </div>
+                </div>
+
+                <div className="mt-12 flex items-center gap-4 pt-10 border-t border-white/5">
+                  <div className="flex -space-x-3">
+                    {[1,2,3,4].map(i => (
+                      <div key={i} className="h-10 w-10 rounded-full border-2 border-[#0E2C40] bg-[#148D8D]/20 backdrop-blur-sm flex items-center justify-center text-[10px] font-bold">
+                        S9
+                      </div>
+                    ))}
+                  </div>
+                  <div className="text-xs font-medium text-white/40 italic">
+                    Trusted by industry leaders
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className="grid gap-6 sm:grid-cols-2">
               {ONGOING_PROJECT_CARDS.map((project, i) => (
-                <div
+                <motion.div
                   key={`${project.title}-${project.location}`}
-                  className="group relative overflow-hidden rounded-[28px] border border-[#0E2C40]/10 bg-white p-6 shadow-[0_16px_45px_rgba(14,44,64,0.07)] transition-all duration-300 ease-[cubic-bezier(0.32,0.72,0,1)] hover:-translate-y-1.5 hover:border-[#148D8D]/25 hover:shadow-[0_22px_55px_rgba(14,44,64,0.12)]"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group relative flex flex-col overflow-hidden rounded-[32px] border border-[#0E2C40]/5 bg-white p-8 shadow-[0_20px_50px_rgba(14,44,64,0.04)] transition-all duration-500 ease-out hover:-translate-y-2 hover:shadow-[0_40px_80px_rgba(14,44,64,0.08)] hover:border-[#148D8D]/20"
                 >
-                  <div
-                    className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[#148D8D] via-[#7dd3d3] to-transparent opacity-70"
-                    aria-hidden
-                  />
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[#e8f6f4] text-sm font-semibold text-[#148D8D] transition-colors duration-300 group-hover:bg-[#148D8D] group-hover:text-white">
+                  {/* Subtle Gradient Decoration */}
+                  <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-gradient-to-br from-[#148D8D]/5 to-transparent blur-2xl transition-all duration-500 group-hover:scale-150 group-hover:from-[#148D8D]/10" />
+                  
+                  <div className="relative flex items-center justify-between">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#f0f7f6] text-lg font-bold text-[#148D8D] ring-4 ring-white transition-all duration-500 group-hover:bg-[#148D8D] group-hover:text-white group-hover:rotate-[360deg]">
                       {String(i + 1).padStart(2, '0')}
                     </div>
-                    <span className="inline-flex rounded-full bg-[#0E2C40]/5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#0E2C40]/70">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-[#0E2C40]/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#0E2C40]/60 transition-colors group-hover:bg-[#148D8D]/10 group-hover:text-[#148D8D]">
                       {project.category}
                     </span>
                   </div>
 
-                  <div className="mt-6">
-                    <h3 className="text-lg font-semibold leading-snug text-[#0E2C40]">
+                  <div className="relative mt-10 mb-12">
+                    <h3 className="text-xl font-bold tracking-tight text-[#0E2C40] leading-tight transition-colors duration-300 group-hover:text-[#148D8D]">
                       {project.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-relaxed text-[#1A4A5A]">
+                    <div className="mt-4 flex items-center gap-2 text-sm font-medium text-[#1A4A5A]/60">
+                      <div className="h-1 w-1 rounded-full bg-[#148D8D]/40" />
                       {project.location}
-                    </p>
+                    </div>
                   </div>
 
-                  <div className="mt-6 flex items-center justify-between border-t border-[#0E2C40]/8 pt-4">
-                    <span className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[#148D8D]">
-                      <span className="h-2 w-2 rounded-full bg-[#148D8D]" aria-hidden />
-                      In Progress
-                    </span>
-                    <span className="text-xs text-[#0E2C40]/45">
-                      Project {String(i + 1).padStart(2, '0')}
+                  <div className="relative mt-auto flex items-center justify-between pt-6 border-t border-[#0E2C40]/5">
+                    <div className="flex items-center gap-3">
+                      <div className="relative flex h-2.5 w-2.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#148D8D] opacity-75"></span>
+                        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#148D8D]"></span>
+                      </div>
+                      <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#148D8D]">
+                        In Progress
+                      </span>
+                    </div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#0E2C40]/30 group-hover:text-[#0E2C40]/50 transition-colors">
+                      Live Project
                     </span>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -361,6 +391,19 @@ export default function ProjectsPage() {
               <p>+91 99301 11780</p>
               <p>s9enterprises18@gmail.com</p>
               <p>Thane (West), Mumbai</p>
+            </div>
+            
+            {/* Footer Socials */}
+            <div className="flex gap-4 mt-6">
+              <a href="https://www.instagram.com/s9_interiors?igsh=eHlpcm42MHo5MWd4" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Instagram className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
+              <a href="https://www.facebook.com/share/1Lg6wQZFgL/" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Facebook className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
+              <a href="#" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Youtube className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ChevronRight, MapPin, Mail, Phone, ArrowRight, Star } from 'lucide-react';
+import { ChevronRight, MapPin, Mail, Phone, ArrowRight, Star, Instagram, Facebook, Youtube } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/Navbar';
@@ -570,52 +570,61 @@ export default function Home() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-stretch">
-            {/* Left: interior image */}
-            <div className="relative">
-              <div className="h-full rounded-3xl overflow-hidden border border-[#0E2C40]/10 bg-white shadow-xl shadow-[#0E2C40]/10">
-                <div className="aspect-[4/5] sm:aspect-[4/3] lg:h-full lg:aspect-auto">
-                  <img
-                    src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=900&fit=crop"
-                    alt="Interior studio project by S9 Enterprises"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="absolute inset-x-6 bottom-6 rounded-2xl bg-white/95 backdrop-blur-md border border-[#0E2C40]/10 px-5 py-4 text-xs sm:text-sm text-[#0E2C40] flex flex-col gap-3 shadow-lg">
-                  <p className="text-[11px] uppercase tracking-[0.25em] text-[#148D8D]">
-                    Studio Details
-                  </p>
-                  <div className="space-y-2">
-                    <div className="flex items-start gap-2.5">
-                      <Phone className="h-4 w-4 text-[#148D8D] mt-0.5" />
+            {/* Left: Contact Info & Value Prop */}
+            <div className="flex flex-col justify-center space-y-8">
+              <div className="relative overflow-hidden rounded-[2.5rem] bg-[#0E2C40] p-8 md:p-10 text-white shadow-2xl">
+                <div className="absolute top-0 right-0 h-64 w-64 -translate-y-1/2 translate-x-1/2 rounded-full bg-[#148D8D]/20 blur-[100px]" />
+                <div className="relative z-10">
+                  <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#7dd3d3] mb-6">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#7dd3d3] animate-pulse" />
+                    Studio Access
+                  </div>
+                  <h3 className="text-3xl font-bold mb-6 leading-tight">Visit our creative hub in Thane.</h3>
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10">
+                        <Phone className="h-4 w-4 text-[#7dd3d3]" />
+                      </div>
                       <div>
-                        <p className="font-medium text-[#0E2C40] text-xs sm:text-sm">Phone</p>
-                        <p className="text-[#1A4A5A] text-xs sm:text-sm">
-                          +91 99301 11780 &nbsp;/&nbsp; +91 93200 20010
-                        </p>
+                        <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">Direct Line</p>
+                        <p className="text-lg font-semibold">+91 99301 11780</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-2.5">
-                      <Mail className="h-4 w-4 text-[#148D8D] mt-0.5" />
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10">
+                        <Mail className="h-4 w-4 text-[#7dd3d3]" />
+                      </div>
                       <div>
-                        <p className="font-medium text-[#0E2C40] text-xs sm:text-sm">Email</p>
-                        <a
-                          href="mailto:s9enterprises18@gmail.com"
-                          className="text-[#148D8D] underline-offset-2 hover:underline text-xs sm:text-sm"
-                        >
-                          s9enterprises18@gmail.com
-                        </a>
+                        <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">Email Studio</p>
+                        <p className="text-lg font-semibold">s9enterprises18@gmail.com</p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-2.5">
-                      <MapPin className="h-4 w-4 text-[#148D8D] mt-0.5" />
+
+                    <div className="flex items-start gap-4">
+                      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10">
+                        <MapPin className="h-4 w-4 text-[#7dd3d3]" />
+                      </div>
                       <div>
-                        <p className="font-medium text-[#0E2C40] text-xs sm:text-sm">Studio Address</p>
-                        <p className="text-[#1A4A5A] text-xs sm:text-sm">
-                          13, Neelambari CHS, Off Pokharan Road No.1, Shastri Nagar, Thane West â€“ 400606
+                        <p className="text-xs font-bold uppercase tracking-widest text-white/40 mb-1">Location</p>
+                        <p className="text-base font-medium leading-relaxed text-white/80">
+                          13, Neelambari CHS, Shastri Nagar, Thane West – 400606
                         </p>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-3xl border border-[#0E2C40]/5 bg-white p-6 shadow-sm">
+                  <div className="text-2xl font-bold text-[#148D8D]">15+</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#1A4A5A]/50 mt-1">Years Exp</div>
+                </div>
+                <div className="rounded-3xl border border-[#0E2C40]/5 bg-white p-6 shadow-sm">
+                  <div className="text-2xl font-bold text-[#148D8D]">Pan India</div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-[#1A4A5A]/50 mt-1">Footprint</div>
                 </div>
               </div>
             </div>
@@ -734,6 +743,19 @@ export default function Home() {
               <p>+91 99301 11780</p>
               <p>s9enterprises18@gmail.com</p>
               <p>Thane (West), Mumbai</p>
+            </div>
+            
+            {/* Footer Socials */}
+            <div className="flex gap-4 mt-6">
+              <a href="https://www.instagram.com/s9_interiors?igsh=eHlpcm42MHo5MWd4" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Instagram className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
+              <a href="https://www.facebook.com/share/1Lg6wQZFgL/" target="_blank" rel="noopener noreferrer" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Facebook className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
+              <a href="#" className="h-11 w-11 rounded-[14px] bg-[#f2f4f7] border border-[#e4e7ec] flex items-center justify-center text-[#5a809e] hover:bg-[#e4e7ec] hover:text-[#3d5a73] transition-all shadow-sm">
+                <Youtube className="h-[22px] w-[22px]" strokeWidth={2} />
+              </a>
             </div>
           </div>
         </div>
